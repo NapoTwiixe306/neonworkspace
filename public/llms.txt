@@ -1,0 +1,18 @@
+# Julien M, développeur web & front-end à Liège
+
+> Développeur web et front-end freelance basé à Liège (Belgique). Création de
+> sites vitrines, e-commerce et applications web sur mesure avec Next.js, React
+> et TypeScript, rapides, accessibles et bien référencés. Clients à Liège,
+> Seraing, Herstal, Verviers, Huy et dans toute la Wallonie.
+
+## Pages principales
+- [Développeur web à Liège](/developpeur-web-liege): services, stack technique et FAQ.
+- [Blog](/blog): articles sur le développement web, Next.js, la performance et le SEO.
+
+## Articles
+- [Combien coûte un site web à Liège en 2026](/blog/prix-site-web-liege): guide des prix (vitrine, e-commerce, application).
+- [Pourquoi je choisis Next.js pour les sites d'entreprise](/blog/pourquoi-nextjs-site-entreprise): rendu serveur, performance, SEO.
+- [Référencement local à Liège](/blog/referencement-local-liege): apparaître en premier sur Google localement.
+
+## Contact
+- Email: julien.milants@gmail.com
