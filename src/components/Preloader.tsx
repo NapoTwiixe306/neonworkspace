@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const modules = [
   "Korli Engine",
-  "InvoiceGuard Core",
+  "GridBase Core",
   "BluePortel",
   "Motion System",
   "Data Layer",
@@ -19,16 +19,18 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
+    // Séquence courte : un visiteur pressé (recruteur, client) ne doit pas
+    // attendre 4 secondes avant de voir le site.
     const controls = animate(count, 100, {
-      duration: 2.6,
+      duration: 1.5,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (v) => {
         setDisplay(Math.round(v));
         setProgress(v);
       },
       onComplete: () => {
-        setTimeout(() => setExiting(true), 450);
-        setTimeout(onDone, 1250);
+        setTimeout(() => setExiting(true), 300);
+        setTimeout(onDone, 1100);
       },
     });
     return () => controls.stop();
@@ -133,7 +135,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              NEON&nbsp;WORKSPACE
+              JULIEN&nbsp;MILANTS
             </motion.div>
           </div>
 

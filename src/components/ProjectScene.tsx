@@ -19,7 +19,9 @@ export interface ProjectSceneProps {
   // Technos / mots-clés affichés en pastilles.
   tech: string[];
   // Capture du site, affichée dans la fenêtre navigateur (chemin public).
-  screenshot: string;
+  // Absente pour un projet sans interface (API) : fournir alors `terminal`.
+  screenshot?: string;
+  terminal?: { command: string; lines: string[] };
   // Lien externe optionnel (site en ligne, démo, dépôt).
   link?: { label: string; href: string };
 }
@@ -44,6 +46,7 @@ export default function ProjectScene({
   description,
   tech,
   screenshot,
+  terminal,
   link,
 }: ProjectSceneProps) {
   const color = sceneColor[scene];
@@ -97,7 +100,7 @@ export default function ProjectScene({
             {!reduce && (
               <motion.span
                 aria-hidden
-                className="absolute inset-0 select-none text-4xl font-semibold tracking-tight blur-2xl sm:text-5xl md:text-6xl"
+                className="font-display absolute inset-0 select-none text-4xl font-semibold tracking-tight blur-2xl sm:text-5xl md:text-6xl"
                 style={{ color: `rgb(${color})` }}
                 animate={{ opacity: [0.35, 0.75, 0.35], scale: [1, 1.06, 1] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
@@ -206,26 +209,43 @@ export default function ProjectScene({
               />
             )}
 
-            {/* Barre du navigateur */}
+            {/* Barre du navigateur / terminal */}
             <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-3 py-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
               <div className="ml-2 flex-1 truncate rounded-md bg-white/[0.06] px-3 py-1 text-left text-[11px] text-white/45">
-                {domain}
+                {screenshot ? domain : `${name.toLowerCase().replace(/\s+/g, "-")} — zsh`}
               </div>
             </div>
 
-            {/* Capture du site */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden">
-              <Image
-                src={screenshot}
-                alt={`Aperçu du site ${name}`}
-                fill
-                sizes="(min-width: 1024px) 32rem, 90vw"
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-            </div>
+            {screenshot ? (
+              /* Capture du site */
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src={screenshot}
+                  alt={`Aperçu du site ${name}`}
+                  fill
+                  sizes="(min-width: 1024px) 32rem, 90vw"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+            ) : (
+              /* Mockup terminal (projet sans interface, ex. API) */
+              <div className="aspect-[16/10] w-full overflow-hidden p-4 text-left font-mono text-[11px] leading-relaxed sm:text-xs">
+                <p>
+                  <span style={{ color: `rgb(${color})` }}>❯</span>{" "}
+                  <span className="text-white/85">{terminal?.command}</span>
+                </p>
+                <div className="mt-2 text-white/50">
+                  {terminal?.lines.map((line, i) => (
+                    <p key={i} className="whitespace-pre">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.a>
         </motion.div>
       </motion.div>

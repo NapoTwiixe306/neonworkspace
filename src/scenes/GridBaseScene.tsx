@@ -3,9 +3,9 @@
 import ProjectScene from "@/src/components/ProjectScene";
 import { getProject } from "@/src/content/projects";
 
-const project = getProject("blueportel")!;
+const project = getProject("gridbase-api")!;
 
-export default function BluePortelScene() {
+export default function GridBaseScene() {
   return (
     <ProjectScene
       scene={project.scene}
@@ -14,7 +14,7 @@ export default function BluePortelScene() {
       tagline={project.tagline}
       description={project.description}
       tech={project.tech}
-      screenshot={project.screenshot}
+      terminal={project.terminal}
       link={project.link}
     />
   );

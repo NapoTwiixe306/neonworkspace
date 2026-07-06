@@ -3,10 +3,10 @@ import { create } from "zustand";
 export type Scene =
   | "home"
   | "korli"
-  | "invoiceguard"
+  | "gridbase"
   | "blueportel"
-  | "journal"
-  | "about";
+  | "about"
+  | "contact";
 
 interface UIState {
   scene: Scene;

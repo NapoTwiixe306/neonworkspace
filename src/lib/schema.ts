@@ -88,6 +88,39 @@ export function articleSchema(post: {
   };
 }
 
+export function projectSchema(project: {
+  slug: string;
+  name: string;
+  type: "saas" | "site";
+  tagline: string;
+  intro: string;
+  link: { href: string };
+  screenshot?: string;
+}) {
+  const url = `${SITE_URL}/projets/${project.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": project.type === "saas" ? "SoftwareApplication" : "CreativeWork",
+    "@id": `${url}#project`,
+    name: project.name,
+    headline: project.tagline,
+    description: project.intro,
+    url,
+    // Fallback sur le portrait si le projet n'a pas de capture (API).
+    image: project.screenshot
+      ? `${SITE_URL}${project.screenshot}`
+      : SITE.author.image,
+    inLanguage: "fr",
+    author: { "@id": personId },
+    creator: { "@id": personId },
+    ...(project.type === "saas"
+      ? { applicationCategory: "BusinessApplication", operatingSystem: "Web" }
+      : {}),
+    // Le produit réellement en ligne.
+    sameAs: project.link.href,
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",

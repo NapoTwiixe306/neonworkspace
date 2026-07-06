@@ -13,12 +13,13 @@ type DockItem =
   | { id: string; label: string; href: string };
 
 const items: DockItem[] = [
-  { id: "home", label: "Home" },
+  { id: "home", label: "Accueil" },
   { id: "korli", label: "Korli" },
-  { id: "invoiceguard", label: "InvoiceGuard" },
+  { id: "gridbase", label: "GridBase API" },
   { id: "blueportel", label: "BluePortel" },
   { id: "blog", label: "Blog", href: "/blog" },
-  { id: "about", label: "About" },
+  { id: "about", label: "À propos" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function BottomDock() {
@@ -29,7 +30,10 @@ export default function BottomDock() {
   const active = items.find((i) => i.id === scene) ?? items[0];
 
   return (
-    <div className="fixed bottom-4 sm:bottom-6 left-1/2 z-50 -translate-x-1/2">
+    <nav
+      aria-label="Navigation principale"
+      className="fixed bottom-4 sm:bottom-6 left-1/2 z-50 -translate-x-1/2"
+    >
       {/* ---- Desktop : dock horizontal ---- */}
       <div className="hidden items-center gap-3 rounded-2xl border border-white/10 bg-black/60 px-4 py-3 backdrop-blur-xl sm:flex">
         {items.map((item) => {
@@ -57,6 +61,7 @@ export default function BottomDock() {
             <motion.button
               key={item.id}
               onClick={() => setScene(item.id)}
+              aria-current={isActive ? "page" : undefined}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.95 }}
               className="relative whitespace-nowrap px-3 py-2 text-xs text-white/60 hover:text-white"
@@ -128,6 +133,7 @@ export default function BottomDock() {
                 return (
                   <button
                     key={item.id}
+                    aria-current={isActive ? "page" : undefined}
                     onClick={() => {
                       setScene(item.id);
                       setOpen(false);
@@ -175,6 +181,6 @@ export default function BottomDock() {
           </motion.svg>
         </motion.button>
       </div>
-    </div>
+    </nav>
   );
 }

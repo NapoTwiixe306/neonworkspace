@@ -1,4 +1,3 @@
-// Constante partagée entre le serveur (lecture du cookie dans le layout) et le
-// client (écriture du cookie dans BootGate). Module neutre (ni "use client"
-// ni "use server") pour être importable des deux côtés sans surprise.
+// Nom du cookie qui mémorise que le preloader a déjà été joué. Lu et écrit
+// uniquement côté client (BootGate) pour garder la home 100 % statique.
 export const BOOT_COOKIE = "neon_booted";
