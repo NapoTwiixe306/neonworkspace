@@ -1,0 +1,24 @@
+services:
+  frontend:
+    image: ${DOCKER_IMAGE:-jmcorp:latest}
+    container_name: jmcorp
+    restart: always
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    # Pas de port publié sur l'hôte : le reverse proxy (sur korli-network)
+    # joint le conteneur via jmcorp:3000. Décommenter pour exposer en direct :
+    # ports:
+    #   - "127.0.0.1:3002:3000"
+    networks:
+      - jmcorp-network
+      - korli-network
+
+networks:
+  jmcorp-network:
+    driver: bridge
+  korli-network:
+    external: true
