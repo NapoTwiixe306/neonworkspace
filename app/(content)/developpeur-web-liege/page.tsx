@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/src/lib/site";
+import { villes } from "@/src/content/villes";
+import { metiers } from "@/src/content/metiers";
 import { breadcrumbSchema, faqSchema } from "@/src/lib/schema";
 
 export const metadata: Metadata = {
@@ -10,26 +12,58 @@ export const metadata: Metadata = {
   alternates: { canonical: "/developpeur-web-liege" },
 };
 
+// Tarifs de lancement : volontairement sous la fourchette basse du marché
+// liégeois (cf. l'article de blog sur les prix : vitrine 1 500-5 000 €),
+// cohérents avec un début d'activité freelance adossé à de vrais produits
+// livrés (Korli, BluePortel).
 const services = [
   {
     title: "Sites vitrines",
+    price: "à partir de 1 200 €",
     body: "Un site professionnel qui inspire confiance, se charge en un instant et vous fait trouver sur Google. Idéal pour PME, commerces et indépendants liégeois.",
   },
   {
     title: "Applications web sur mesure",
+    price: "à partir de 3 500 €",
     body: "Espace client, tableau de bord, outil métier : je développe des applications React/Next.js fiables et évolutives, pensées pour vos usages réels.",
   },
   {
     title: "Refonte & performance",
+    price: "à partir de 900 €",
     body: "Votre site est lent ou daté ? Je le reconstruis sur des bases modernes : Core Web Vitals au vert, design actuel et SEO intégré.",
   },
   {
     title: "Référencement (SEO & local)",
+    price: "à partir de 500 €",
     body: "Structure technique, données structurées, contenu et SEO local Liège pour apparaître là où vos clients vous cherchent.",
   },
 ];
 
 const stack = ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO", "Accessibilité"];
+
+// Déroulé type d'un projet : rassure un client qui n'a jamais commandé de site.
+const steps = [
+  {
+    title: "Premier échange",
+    body: "Vous me décrivez votre projet (formulaire, email ou appel). On clarifie ensemble le besoin, le périmètre et le budget — sans jargon et sans engagement.",
+  },
+  {
+    title: "Devis clair et détaillé",
+    body: "Vous recevez une proposition écrite : ce qui est inclus, les délais et le prix. Pas de surprise en cours de route.",
+  },
+  {
+    title: "Maquette et validation",
+    body: "Je conçois l'interface et vous la valide avant la moindre ligne de code. Les allers-retours sont prévus, pas subis.",
+  },
+  {
+    title: "Développement",
+    body: "Je développe le site avec des points d'étape réguliers : vous voyez l'avancement sur une URL de test, pas seulement à la fin.",
+  },
+  {
+    title: "Mise en ligne et suivi",
+    body: "Nom de domaine, hébergement, référencement, mise en production : je m'occupe de tout, puis je reste disponible après la livraison.",
+  },
+];
 
 const faq = [
   {
@@ -45,7 +79,7 @@ const faq = [
   {
     question: "Combien coûte un site web ?",
     answer:
-      "Un site vitrine professionnel se situe généralement entre 1 500 € et 5 000 € selon le sur-mesure et les fonctionnalités. Chaque projet fait l'objet d'un devis clair et détaillé.",
+      "Mes sites vitrines démarrent à 1 200 € et les applications sur mesure à 3 500 €, des tarifs de lancement sous la fourchette habituelle du marché liégeois (1 500 € à 5 000 € pour un site vitrine). Chaque projet fait l'objet d'un devis clair et détaillé.",
   },
 ];
 
@@ -82,12 +116,12 @@ export default function DeveloppeurWebLiege() {
           interlocuteur : moi.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <a
-            href={`mailto:${SITE.author.email}`}
+          <Link
+            href="/contact"
             className="rounded-xl border border-white/15 bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/15"
           >
             Démarrer un projet
-          </a>
+          </Link>
           <Link
             href="/blog"
             className="rounded-xl border border-white/10 px-5 py-2.5 text-sm text-white/70 transition-colors hover:text-white"
@@ -117,13 +151,22 @@ export default function DeveloppeurWebLiege() {
               key={s.title}
               className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
             >
-              <h3 className="text-lg font-semibold text-white">{s.title}</h3>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <h3 className="text-lg font-semibold text-white">{s.title}</h3>
+                <p className="text-sm font-medium text-sky-300">{s.price}</p>
+              </div>
               <p className="mt-2 text-sm leading-relaxed text-white/60">
                 {s.body}
               </p>
             </div>
           ))}
         </div>
+        <p className="mt-5 text-sm leading-relaxed text-white/50">
+          Des tarifs de lancement volontairement accessibles : je développe mon
+          activité freelance, avec la même exigence que sur mes propres
+          produits (Korli, BluePortel). Chaque projet fait l&apos;objet
+          d&apos;un devis précis, sans frais cachés.
+        </p>
       </section>
 
       <section className="mb-16">
@@ -139,11 +182,71 @@ export default function DeveloppeurWebLiege() {
             directement à la personne qui conçoit et code votre site.
           </p>
           <p>
-            J&apos;interviens pour des clients de Liège, Seraing, Herstal,
-            Verviers, Huy et de toute la Wallonie, en présentiel comme à
-            distance.
+            J&apos;interviens dans toute la province de Liège et en Wallonie,
+            en présentiel comme à distance :{" "}
+            {villes.map((v, i) => (
+              <span key={v.slug}>
+                <Link
+                  href={`/developpeur-web/${v.slug}`}
+                  className="text-sky-300 underline decoration-sky-400/40 underline-offset-2 transition-colors hover:text-sky-200"
+                >
+                  {v.name}
+                </Link>
+                {i < villes.length - 1 ? ", " : ""}
+              </span>
+            ))}
+            , et les communes alentour.
           </p>
         </div>
+      </section>
+
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Des sites pensés pour votre secteur
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
+          Chaque métier a ses codes en ligne : ce qui convertit pour un
+          restaurant ne convertit pas pour un cabinet d&apos;avocat. J&apos;ai
+          détaillé les enjeux, fonctionnalités et budgets secteur par secteur :
+        </p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {metiers.map((m) => (
+            <Link
+              key={m.slug}
+              href={`/site-internet/${m.slug}`}
+              className="rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-sm text-white/70 transition-colors hover:border-white/25 hover:text-white"
+            >
+              {m.label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Comment ça se passe
+        </h2>
+        <ol className="mt-6 space-y-4">
+          {steps.map((step, i) => (
+            <li
+              key={step.title}
+              className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+            >
+              <span
+                aria-hidden
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sky-400/30 bg-sky-400/10 text-sm font-semibold text-sky-300"
+              >
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="font-semibold text-white">{step.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-white/60">
+                  {step.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="mb-16">
@@ -173,12 +276,20 @@ export default function DeveloppeurWebLiege() {
           Un site, une refonte, une application ? Décrivez-moi votre besoin, je
           vous réponds rapidement avec un premier avis et un devis clair.
         </p>
-        <a
-          href={`mailto:${SITE.author.email}`}
-          className="mt-5 inline-block rounded-xl border border-white/15 bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/15"
-        >
-          {SITE.author.email}
-        </a>
+        <div className="mt-5 flex flex-col items-center gap-3">
+          <Link
+            href="/contact"
+            className="inline-block rounded-xl border border-white/15 bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/15"
+          >
+            Décrire mon projet
+          </Link>
+          <a
+            href={`mailto:${SITE.author.email}`}
+            className="text-sm text-white/50 transition-colors hover:text-white"
+          >
+            ou par email : {SITE.author.email}
+          </a>
+        </div>
       </aside>
     </>
   );

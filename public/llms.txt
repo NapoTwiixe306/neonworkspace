@@ -1,4 +1,4 @@
-# Julien M, développeur web & front-end à Liège
+# Julien Milants, développeur web & front-end à Liège
 
 > Développeur web et front-end freelance basé à Liège (Belgique). Création de
 > sites vitrines, e-commerce et applications web sur mesure avec Next.js, React
@@ -6,13 +6,32 @@
 > Seraing, Herstal, Verviers, Huy et dans toute la Wallonie.
 
 ## Pages principales
-- [Développeur web à Liège](/developpeur-web-liege): services, stack technique et FAQ.
+- [Développeur web à Liège](/developpeur-web-liege): services, tarifs de départ, processus et FAQ.
+- Zones d'intervention (20 communes de la province de Liège, chacune avec contexte local, tarifs et FAQ): [Verviers](/developpeur-web/verviers), [Seraing](/developpeur-web/seraing), [Herstal](/developpeur-web/herstal), [Huy](/developpeur-web/huy), [Waremme](/developpeur-web/waremme), [Spa](/developpeur-web/spa), [Ans](/developpeur-web/ans), [Awans](/developpeur-web/awans), [Aywaille](/developpeur-web/aywaille), [Chaudfontaine](/developpeur-web/chaudfontaine), [Esneux](/developpeur-web/esneux), [Flémalle](/developpeur-web/flemalle), [Fléron](/developpeur-web/fleron), [Grâce-Hollogne](/developpeur-web/grace-hollogne), [Hannut](/developpeur-web/hannut), [Oupeye](/developpeur-web/oupeye), [Saint-Nicolas](/developpeur-web/saint-nicolas), [Soumagne](/developpeur-web/soumagne), [Sprimont](/developpeur-web/sprimont), [Visé](/developpeur-web/vise).
+- Sites par secteur (10 métiers, avec enjeux, fonctionnalités, budgets et FAQ): [restaurant](/site-internet/restaurant), [coiffeur](/site-internet/coiffeur), [institut de beauté](/site-internet/institut-de-beaute), [artisan du bâtiment](/site-internet/artisan), [avocat](/site-internet/avocat), [kiné et paramédical](/site-internet/kine), [garage](/site-internet/garage), [agence immobilière](/site-internet/agence-immobiliere), [gîte et hébergement](/site-internet/gite), [ASBL](/site-internet/asbl).
+- [Projets](/projets): SaaS et sites web réalisés de A à Z.
 - [Blog](/blog): articles sur le développement web, Next.js, la performance et le SEO.
+- [Contact](/contact): formulaire pour décrire un projet.
+
+## Projets
+- [Korli](/projets/korli): SaaS de link-in-bio intelligent qui adapte la page à la source de trafic (Next.js, TypeScript, Prisma, Stripe). En ligne: https://korli.fr
+- [BluePortel](/projets/blueportel): site de réservation directe de mobil-homes vue mer à Le Portel, projet client (Next.js, TypeScript, Stripe). En ligne: https://blueportel.fr
+- [GridBase API](/projets/gridbase-api): API REST open source de données motorsport (pilotes, équipes, engagés en F1, WEC et IMSA), fondation de la future plateforme GridBase (TypeScript, Fastify, Prisma, MySQL). Code: https://github.com/NapoTwiixe306/gridbase-api
 
 ## Articles
 - [Combien coûte un site web à Liège en 2026](/blog/prix-site-web-liege): guide des prix (vitrine, e-commerce, application).
+- [Agence web ou freelance à Liège](/blog/agence-web-ou-freelance-liege): comparatif honnête des prix réels belges, forces, pièges et test en 6 questions.
+- [Subsides et aides pour un site web en Wallonie](/blog/subsides-site-web-wallonie): chèques-entreprises, chèque maturité numérique, déductibilité fiscale, démarches 2026.
+- [WordPress ou site sur mesure](/blog/wordpress-ou-site-sur-mesure): comparatif chiffré (coûts sur 3 ans, sécurité, performance, SEO) avec verdict par profil.
 - [Pourquoi je choisis Next.js pour les sites d'entreprise](/blog/pourquoi-nextjs-site-entreprise): rendu serveur, performance, SEO.
-- [Référencement local à Liège](/blog/referencement-local-liege): apparaître en premier sur Google localement.
+- [Référencement local à Liège](/blog/referencement-local-liege): apparaître en premier sur Google localement, plan d'action 30 jours.
+- [Combien de temps pour créer un site web](/blog/delai-creation-site-web): délais réels par type de projet, planning semaine par semaine, rétroplanning.
+- [Refonte de site sans perdre son référencement](/blog/refonte-site-internet-seo): redirections 301, checklist de migration SEO complète.
+- [Shopify, WooCommerce ou sur mesure](/blog/shopify-woocommerce-ou-sur-mesure): comparatif e-commerce 2026 pour PME belges, coûts réels sur 3 ans.
+- [Site internet pour indépendant en Belgique](/blog/site-internet-independant-belgique): obligations légales (BCE, RGPD), domaine .be, budget et structure type.
+- [Google Business Profile, le guide complet](/blog/google-business-profile-guide): créer, optimiser et faire vivre sa fiche, avis, erreurs et arnaques.
+- [Créer un site multilingue en Belgique](/blog/site-multilingue-belgique): quand traduire (FR/NL/DE/EN), hreflang, coûts réels et erreurs classiques.
+- [Votre site ne génère pas de clients ?](/blog/site-web-sans-clients): les 7 causes réelles et leurs remèdes, auto-diagnostic en 15 minutes.
 
 ## Contact
 - Email: julien.milants@gmail.com
